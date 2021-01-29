@@ -53,7 +53,7 @@ jobs:
     - name: Merge PR
       env:
         PR_NUM: ${{ steps.pr.outputs.pull-request-number }}
-        CI_TOKEN: ${{ secrets.GOATCN_CI_GITHUB_PAT }}
+        CI_TOKEN: ${{ secrets.BOT_TOKEN }}
       run: |
         curl -s -f \
           -X PUT \
