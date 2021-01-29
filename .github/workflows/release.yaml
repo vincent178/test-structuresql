@@ -18,6 +18,11 @@ jobs:
           POSTGRES_DB: testdb_test
 
     steps:
+    - name: Prepare
+      run: |
+        apt update
+        apt install git
+
     - name: Checkout
       uses: actions/checkout@v2
 
