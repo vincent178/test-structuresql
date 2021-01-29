@@ -47,6 +47,7 @@ jobs:
         bundle exec rake db:migrate
 
     - name: Create PR to update structure.sql
+      id: pr
       uses: peter-evans/create-pull-request@v3
       with:
         commit-message: '[BOT] Update structure.sql'
@@ -54,3 +55,14 @@ jobs:
         delete-branch: true
         title: '[BOT] Update structure.sql'
         body: '[BOT] Update structure.sql'
+
+    - name: Merge PR
+      env:
+        PR_NUM: ${{ steps.pr.outputs.pull-request-number }}
+      run: |
+        curl -s \
+          -X PUT \
+          -H "Authorization: token ${GITHUB_TOKEN}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/vincent178/test-structuresql/pulls/${PR_NUM}/merge \
+          -d '{"merge_method":"squash"}'
