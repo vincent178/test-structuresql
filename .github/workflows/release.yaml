@@ -1,5 +1,10 @@
 name: Release
 
+on:
+  push:
+    branches:
+      - master
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -43,3 +48,4 @@ jobs:
         delete-branch: true
         title: '[BOT] Update structure.sql'
         body: '[BOT] Update structure.sql'
+
