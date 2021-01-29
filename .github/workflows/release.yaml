@@ -54,7 +54,7 @@ jobs:
       env:
         PR_NUM: ${{ steps.pr.outputs.pull-request-number }}
       run: |
-        curl -s \
+        curl -s -f \
           -X PUT \
           -H "Authorization: token ${GITHUB_TOKEN}" \
           -H "Accept: application/vnd.github.v3+json" \
