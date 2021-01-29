@@ -20,8 +20,8 @@ jobs:
     steps:
     - name: Prepare
       run: |
-        apt update
-        apt install git
+        sudo apt update
+        sudo apt install git
 
     - name: Checkout
       uses: actions/checkout@v2
