@@ -53,10 +53,11 @@ jobs:
     - name: Merge PR
       env:
         PR_NUM: ${{ steps.pr.outputs.pull-request-number }}
+        CI_TOKEN: ${{ secrets.GOATCN_CI_GITHUB_PAT }}
       run: |
         curl -s -f \
           -X PUT \
-          -H "Authorization: token ${GITHUB_TOKEN}" \
+          -H "Authorization: token ${CI_TOKEN}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/vincent178/test-structuresql/pulls/${PR_NUM}/merge \
           -d '{"merge_method":"squash"}'
