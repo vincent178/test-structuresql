@@ -8,7 +8,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    container: circleci/ruby:2.7.1-buster-node
+    # container: circleci/ruby:2.7.1-buster-node
     services:
       db:
         image: postgres:11
@@ -26,7 +26,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Setup
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.7'
+
+    - name: Dump
       env:
         PGHOST: 127.0.0.1
         PGUSER: sneakers
