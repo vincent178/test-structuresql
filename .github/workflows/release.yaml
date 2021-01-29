@@ -51,6 +51,7 @@ jobs:
         body: '[BOT] Update structure.sql'
 
     - name: Merge PR
+      if: ${{ steps.pr.outputs.pull-request-number }}
       env:
         PR_NUM: ${{ steps.pr.outputs.pull-request-number }}
         CI_TOKEN: ${{ secrets.BOT_TOKEN }}
