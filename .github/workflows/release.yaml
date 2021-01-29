@@ -1,22 +1,7 @@
 name: Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      app:
-        description: 'App Name'
-        required: true
-      environment:
-        description: 'Environment Name'
-        required: true
-      ref:
-        description: 'Ref of Repo'
-        required: false
-        default: ''
-
 jobs:
   release:
-
     runs-on: ubuntu-latest
     services:
       db:
