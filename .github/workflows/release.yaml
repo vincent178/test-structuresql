@@ -11,11 +11,10 @@ jobs:
     # container: circleci/ruby:2.7.1-buster-node
     services:
       db:
-        image: postgres:11
+        image: postgres:10.15
         ports: ['5432:5432']
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: sneakers
           POSTGRES_DB: testdb_test
         options: >-
           --health-cmd pg_isready
@@ -39,7 +38,7 @@ jobs:
     - name: Dump
       env:
         PGHOST: 127.0.0.1
-        PGUSER: postgres
+        PGUSER: sneakers
         RAILS_ENV: test
       run: |
         sudo apt-get -yqq install libpq-dev
