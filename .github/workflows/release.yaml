@@ -52,4 +52,3 @@ jobs:
         delete-branch: true
         title: '[BOT] Update structure.sql'
         body: '[BOT] Update structure.sql'
-
